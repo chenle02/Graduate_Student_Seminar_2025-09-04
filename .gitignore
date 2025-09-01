@@ -1,0 +1,15 @@
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+.python-version
+.ruff_cache/
+
+# Manim build artifacts
+media/
+Longest_increasing_subsequence/media/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+

@@ -37,3 +37,5 @@
 - PRs: Include a short description, before/after screenshots or a brief screencast, and reference related issues if any.
 - Media hygiene: Optimize images/videos where possible; keep large files out of diff churn and avoid renaming unless necessary.
 
+## Documentation
+- README upkeep: Update `README.md` (and relevant subfolder READMEs) whenever setup steps, dependencies, commands, paths, or usage change. Keep instructions current (e.g., uv usage, render scripts, media locations).
