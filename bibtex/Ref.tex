@@ -1,0 +1,179 @@
+\documentclass[12pt]{article} %{{{
+
+% -------------------------------------------------
+%   _            ____ _
+%  | |    ___   / ___| |__   ___ _ __
+%  | |   / _ \ | |   | '_ \ / _ \ '_ \
+%  | |__|  __/ | |___| | | |  __/ | | |
+%  |_____\___|  \____|_| |_|\___|_| |_|
+%
+%  Created on Wed 27 Mar 2024 11:37:12 AM CDT
+%
+%  Document created on Wed 27 Mar 2024 11:37:12 AM CDT
+%
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+% {{{
+\usepackage{graphicx,url,subfig}
+% \usepackage[final]{pdfpages}
+\RequirePackage{amsthm,amsmath,amssymb,amscd,mathrsfs,mathtools}
+% \usepackage{luacode}
+\usepackage{enumerate,xcolor}
+\usepackage[text={6.2in,8.6in},centering]{geometry}
+\usepackage{filecontents}
+\usepackage{xcolor}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            filecolor=magenta,
+            urlcolor=cyan,
+            citecolor=magenta,
+            pdftitle={Comments},
+            pdfpagemode=FullScreen,
+           ]{hyperref}
+% }}}
+% -------------------------------------------------
+% Bibtex related
+% -------------------------------------------------
+% {{{
+\usepackage[strict=true,style=english]{csquotes}
+% \usepackage[style=alphabetic, %authoryear bibstyle=authoryear,
+%             citestyle=authoryear,
+%             natbib=true,
+%             hyperref=true,
+%             backref=true,
+%             abbreviate=true]{biblatex}
+\usepackage[backend=biber,
+            style=alphabetic,
+            natbib=true,
+            maxbibnames=99,
+            sorting=ynt,
+            abbreviate=true]{biblatex}
+% Options for sorting:
+% nty—sorts entries by name, title, year;
+% nyt—sorts entries by name, year, title;
+% nyvt—sorts entries by name, year, volume, title;
+% anyt—sorts entries by alphabetic label, name, year, title;
+% anyvt—sorts entries by alphabetic label, name, year, volume, title;
+% ynt—sorts entries by year, name, title;
+% ydnt—sorts entries by year (descending order), name, title;
+% none—no sorting. Entries appear in the order they appear in the text.
+
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearfield{doi}
+ \clearfield{url}
+ \clearfield{issn}
+ \clearlist{location}
+ \clearfield{month}
+ \clearfield{series}
+
+ \ifentrytype{book}{}{% Remove publisher and editor except for books
+  \clearlist{publisher}
+  \clearname{editor}
+ }
+}
+% \addbibresource{All.bib}
+\addbibresource{~/Dropbox/workspace/svn/refdb/All.bib}
+% }}}
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% {{{
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+% }}}
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+% {{{
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+% }}}
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+% {{{
+\newcommand{\R}{ {\mathbb{R} }}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\HH}{\mathcal{H}}
+\renewcommand{\P}{\mathrm{P}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+% \renewcommand{\d }{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Var}{\text{\rm Var}}
+\newcommand{\ud}{\text{\rm d}}
+\newcommand{\lip}{\text{\rm Lip}}
+\newcommand{\lup}{\text{\rm L}}
+\newcommand{\logapp}{\stackrel{(\log)}{\asymp}}
+\newcommand{\Norm}[1]{\left|\left|  #1   \right|\right|}
+\DeclareMathOperator{\Cov}{\text{\rm Cov}}
+% }}}
+% }}}
+% -------------------------------------------------
+% Title, authors and date go here.
+% -------------------------------------------------
+% {{{
+\title{Some comments}
+\author{Le Chen}
+\date{\today}
+\begin{document}
+\maketitle
+\noindent
+
+Dear all,
+\bigskip
+% }}}
+% -------------------------------------------------
+% Document begins here
+% -------------------------------------------------
+
+Start here.
+
+\cite{family.vicsek:85:scaling}
+\cite{kardar.parisi.ea:86:dynamic}
+\cite{barabasi.stanley:95:fractal}
+\cite{zhang.zhang.ea:92:modeling}
+~\cite{takeuchi.sano.ea:11:growing}
+
+Paper inking: ~\cite{barabasi.stanley:95:fractal} (the book)
+
+Paper burning: ~\cite{zhang.zhang.ea:92:modeling}
+
+% -------------------------------------------------
+% Signature
+% -------------------------------------------------
+\bigskip
+\noindent
+Best regards,
+
+\noindent
+Le
+% -------------------------------------------------
+% References go here.
+% -------------------------------------------------
+% --------------------------- {{{
+\begingroup
+\global\let\savedifeof=\ifeof
+\def\ifeof#1{\global\let\ifeof=\savedifeof\iftrue}%
+\printbibliography[title={References}]
+\end{document}
+% }}}
+

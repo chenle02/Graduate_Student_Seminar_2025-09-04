@@ -1,0 +1,11 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+barabasi.stanley:95:fractal	Ref_biber.bib	/^@BOOK{barabasi.stanley:95:fractal,$/;"	b
+family.vicsek:85:scaling	Ref_biber.bib	/^@ARTICLE{family.vicsek:85:scaling,$/;"	b
+kardar.parisi.ea:86:dynamic	Ref_biber.bib	/^@ARTICLE{kardar.parisi.ea:86:dynamic,$/;"	b
+takeuchi.sano.ea:11:growing	Ref_biber.bib	/^@ARTICLE{takeuchi.sano.ea:11:growing,$/;"	b
+zhang.zhang.ea:92:modeling	Ref_biber.bib	/^@ARTICLE{zhang.zhang.ea:92:modeling,$/;"	b
