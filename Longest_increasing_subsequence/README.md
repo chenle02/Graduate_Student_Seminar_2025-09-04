@@ -17,3 +17,8 @@ This subsequence has length six; the input sequence has no seven-member increasi
     0, 4, 6, 9, 13, 15
 
 are other increasing subsequences of equal length in the same input sequence.
+
+# Goal:
+
+Use dynamic programming to find the longest increasing subsequence in a given array of integers. Use the above example.
+Use manim package to generate an animation video to illustrate the process.
