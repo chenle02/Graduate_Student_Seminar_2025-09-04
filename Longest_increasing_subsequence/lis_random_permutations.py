@@ -7,7 +7,7 @@ from Longest_increasing_subsequence.lis_dp import lis_dp
 class LisRandomPermutationsBase(Scene):
     # To be configured by subclasses
     N = 8
-    M = 6
+    M = 12
     TITLE_TEXT = "LIS in Random Permutations"
     FONT_SIZE = 24
 
@@ -83,13 +83,13 @@ class LisRandomPermutationsBase(Scene):
 
 class LisPermutationsSmall(LisRandomPermutationsBase):
     N = 8
-    M = 6
+    M = 12
     TITLE_TEXT = "LIS in Random Permutations (N=8)"
     FONT_SIZE = 30
 
 class LisPermutationsLarge(LisRandomPermutationsBase):
     N = 16
-    M = 5
+    M = 12
     TITLE_TEXT = "LIS in Random Permutations (N=16)"
     FONT_SIZE = 24
 
