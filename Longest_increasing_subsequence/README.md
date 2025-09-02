@@ -47,18 +47,36 @@ This subsequence has length 6. Other LIS solutions of equal length include:
 
 ## How to Run (animation)
 
+### Original Animation
+
 From the repository root:
 
-```
-cd Longest_increasing_subsequence
-manim -pqh lis_manim.py LisDPScene
+```sh
+manim -pqh Longest_increasing_subsequence/lis_manim.py LisDPScene
 ```
 
-Expected output is an MP4 generated under Manim's `media` folder. Copy or move the rendered file to `videos/LIS_DP_VdC.mp4` so the slide can reference it. Example:
+Expected output is an MP4 generated under Manim's `media` folder. Copy or move the rendered file to `videos/LIS_DP_VdC.mp4`. Example:
 
+```sh
+mkdir -p videos
+cp media/videos/lis_manim/1080p60/LisDPScene.mp4 videos/LIS_DP_VdC.mp4
 ```
-mkdir -p ../videos
-cp media/videos/lis_manim/1080p60/LisDPScene.mp4 ../videos/LIS_DP_VdC.mp4
+
+### Gemini-Generated Animation
+
+This version was created by Gemini and includes an author credit overlay.
+
+From the repository root:
+
+```sh
+manim -pqh Longest_increasing_subsequence/lis_manim_gemini.py LisDPSceneGemini
+```
+
+Expected output is an MP4 generated under Manim's `media` folder. Copy or move the rendered file to `videos/LIS_DP_VdC_gemini.mp4`. Example:
+
+```sh
+mkdir -p videos
+cp media/videos/lis_manim_gemini/1080p60/LisDPSceneGemini.mp4 videos/LIS_DP_VdC_gemini.mp4
 ```
 
 ## Storyboard (Manim)

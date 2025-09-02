@@ -35,7 +35,9 @@ class LisDPSceneGemini(Scene):
         for i in range(n):
             prev_mobs[i].next_to(dp_mobs[i], DOWN, buff=0.6)
             
-        self.play(FadeIn(title), FadeIn(nums), FadeIn(indices), FadeIn(dp_label), FadeIn(dp_mobs), FadeIn(prev_label), FadeIn(prev_mobs))
+        author_text = Text("Le Chen@Auburn, 2025/09", font_size=20).to_corner(DOWN + RIGHT, buff=0.5)
+        self.play(FadeIn(title), FadeIn(nums), FadeIn(indices), FadeIn(dp_label), FadeIn(dp_mobs), FadeIn(prev_label), FadeIn(prev_mobs), FadeIn(author_text))
+        self.wait(1)
         self.wait(1)
 
         # --- DP Algorithm Logic ---
