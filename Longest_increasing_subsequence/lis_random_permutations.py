@@ -17,7 +17,7 @@ class LisRandomPermutationsBase(Scene):
 
         # 1. Scene Setup
         title = Text(self.TITLE_TEXT, font_size=40).to_edge(UP)
-        params = Text(f"N = {self.N}, M = {self.M}", font_size=32).next_to(title, DOWN)
+        params = Text(f"N = {self.N}, Number of Permutations = {self.M}", font_size=32).next_to(title, DOWN)
         self.play(Write(title), Write(params))
         self.wait(1)
 
@@ -84,13 +84,13 @@ class LisRandomPermutationsBase(Scene):
 class LisPermutationsSmall(LisRandomPermutationsBase):
     N = 8
     M = 12
-    TITLE_TEXT = "LIS in Random Permutations (N=8)"
+    TITLE_TEXT = "LIS in Random Permutations"
     FONT_SIZE = 30
 
 class LisPermutationsLarge(LisRandomPermutationsBase):
     N = 16
     M = 12
-    TITLE_TEXT = "LIS in Random Permutations (N=16)"
+    TITLE_TEXT = "LIS in Random Permutations"
     FONT_SIZE = 24
 
 class LisPermutationsPrototype(LisRandomPermutationsBase):
