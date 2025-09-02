@@ -43,3 +43,14 @@
 
 - See `AGENTS.md` for repository guidelines (structure, testing, media, and docs).
 - Manim render outputs to `media/`; final videos should live under `videos/` and be referenced by slides using relative paths.
+
+## Rendering Animations with Make
+
+A `Makefile` is provided to simplify the rendering of Manim animations. From the project root, you can use the following commands:
+
+- `make all`: Renders both the original and the Gemini-generated LIS animations.
+- `make lis`: Renders only the original LIS animation.
+- `make lis-gemini`: Renders only the Gemini-generated LIS animation.
+- `make clean`: Removes the `media/` directory created by Manim.
+
+The `Makefile` handles the creation of the `videos/` directory and copies the rendered animations to the correct location.
