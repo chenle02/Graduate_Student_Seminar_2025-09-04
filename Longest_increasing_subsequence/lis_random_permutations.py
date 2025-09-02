@@ -10,6 +10,9 @@ class LisRandomPermutationsBase(Scene):
     FONT_SIZE = 24
 
     def construct(self):
+        author_text = Text("Le Chen@Auburn, 2025/09", font_size=20).to_corner(DOWN + RIGHT, buff=0.5)
+        self.add(author_text)
+
         # 1. Scene Setup
         title = Text(self.TITLE_TEXT, font_size=40).to_edge(UP)
         params = Text(f"N = {self.N}, M = {self.M}", font_size=32).next_to(title, DOWN)
