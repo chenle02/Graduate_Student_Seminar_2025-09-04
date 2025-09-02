@@ -47,37 +47,14 @@ This subsequence has length 6. Other LIS solutions of equal length include:
 
 ## How to Run (animation)
 
-### Original Animation
+This project uses a `Makefile` to simplify the animation rendering process. From the repository root, you can use the following commands:
 
-From the repository root:
+- **`make all`**: Renders both the original and the Gemini-generated animations.
+- **`make lis`**: Renders only the original animation (`lis_manim.py`).
+- **`make lis-gemini`**: Renders only the Gemini-generated animation (`lis_manim_gemini.py`).
+- **`make clean`**: Removes the `media` directory created by Manim.
 
-```sh
-manim -pqh Longest_increasing_subsequence/lis_manim.py LisDPScene
-```
-
-Expected output is an MP4 generated under Manim's `media` folder. Copy or move the rendered file to `videos/LIS_DP_VdC.mp4`. Example:
-
-```sh
-mkdir -p videos
-cp media/videos/lis_manim/1080p60/LisDPScene.mp4 videos/LIS_DP_VdC.mp4
-```
-
-### Gemini-Generated Animation
-
-This version was created by Gemini and includes an author credit overlay.
-
-From the repository root:
-
-```sh
-manim -pqh Longest_increasing_subsequence/lis_manim_gemini.py LisDPSceneGemini
-```
-
-Expected output is an MP4 generated under Manim's `media` folder. Copy or move the rendered file to `videos/LIS_DP_VdC_gemini.mp4`. Example:
-
-```sh
-mkdir -p videos
-cp media/videos/lis_manim_gemini/1080p60/LisDPSceneGemini.mp4 videos/LIS_DP_VdC_gemini.mp4
-```
+The `Makefile` will automatically place the rendered videos in the `videos/` directory.
 
 ## Storyboard (Manim)
 
