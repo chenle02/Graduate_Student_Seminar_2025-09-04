@@ -62,8 +62,9 @@ Two additional animations are available to visualize the LIS for multiple random
 
 - **`make lis-random-small`**: Renders an animation with `N=8` and `M=6`.
 - **`make lis-random-large`**: Renders an animation with `N=16` and `M=5`.
+- **`make lis-random-proto`**: Renders a small prototype animation with `N=4` and `M=3`.
 
-The generated videos will be named `LIS_Random_Small.mp4` and `LIS_Random_Large.mp4` and placed in the `videos/` directory.
+The generated videos will be named `LIS_Random_Small.mp4`, `LIS_Random_Large.mp4`, and `LIS_Random_Proto.mp4` and placed in the `videos/` directory.
 
 ## Storyboard (Manim)
 
