@@ -49,12 +49,21 @@ This subsequence has length 6. Other LIS solutions of equal length include:
 
 This project uses a `Makefile` to simplify the animation rendering process. From the repository root, you can use the following commands:
 
-- **`make all`**: Renders both the original and the Gemini-generated animations.
+- **`make all`**: Renders all LIS animations.
 - **`make lis`**: Renders only the original animation (`lis_manim.py`).
 - **`make lis-gemini`**: Renders only the Gemini-generated animation (`lis_manim_gemini.py`).
 - **`make clean`**: Removes the `media` directory created by Manim.
 
 The `Makefile` will automatically place the rendered videos in the `videos/` directory.
+
+### Random Permutation Animations
+
+Two additional animations are available to visualize the LIS for multiple random permutations. These are defined in `lis_random_permutations.py`.
+
+- **`make lis-random-small`**: Renders an animation with `N=8` and `M=6`.
+- **`make lis-random-large`**: Renders an animation with `N=16` and `M=5`.
+
+The generated videos will be named `LIS_Random_Small.mp4` and `LIS_Random_Large.mp4` and placed in the `videos/` directory.
 
 ## Storyboard (Manim)
 
