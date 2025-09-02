@@ -1,5 +1,6 @@
 from manim import *
 import random
+import re
 from Longest_increasing_subsequence.lis_dp import lis_dp
 
 class LisRandomPermutationsBase(Scene):
@@ -66,7 +67,7 @@ class LisRandomPermutationsBase(Scene):
             self.wait(0.5)
 
         # Final summary text (optional)
-        avg_len = sum(int(lt.text.split()[-1]) for lt in all_length_texts) / self.M
+        avg_len = sum(int(re.search(r'\d+', lt.text).group()) for lt in all_length_texts) / self.M
         avg_text = Text(f"Average LIS Length: {avg_len:.2f}", font_size=32).to_edge(DOWN)
         self.play(Write(avg_text))
 
