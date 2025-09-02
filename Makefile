@@ -1,9 +1,9 @@
 # Makefile for project animations
 
-.PHONY: all clean lis lis-gemini lis-random-small lis-random-large
+.PHONY: all clean lis lis-gemini lis-random-small lis-random-large lis-random-proto
 
 # Default target
-all: lis lis-gemini lis-random-small lis-random-large
+all: lis lis-gemini lis-random-small lis-random-large lis-random-proto
 
 lis:
 	@echo "Rendering original LIS animation..."
@@ -32,6 +32,13 @@ lis-random-large:
 	@echo "Copying video to videos/"
 	@mkdir -p videos
 	@cp media/videos/lis_random_permutations/1080p60/LisPermutationsLarge.mp4 videos/LIS_Random_Large.mp4
+
+lis-random-proto:
+	@echo "Rendering LIS random permutations (prototype)..."
+	manim -pqh Longest_increasing_subsequence/lis_random_permutations.py LisPermutationsPrototype
+	@echo "Copying video to videos/"
+	@mkdir -p videos
+	@cp media/videos/lis_random_permutations/1080p60/LisPermutationsPrototype.mp4 videos/LIS_Random_Proto.mp4
 
 clean:
 	@echo "Cleaning up Manim media files..."

@@ -79,3 +79,9 @@ class LisPermutationsLarge(LisRandomPermutationsBase):
     M = 5
     TITLE_TEXT = "LIS in Random Permutations (N=16)"
     FONT_SIZE = 24
+
+class LisPermutationsPrototype(LisRandomPermutationsBase):
+    N = 4
+    M = 3
+    TITLE_TEXT = "LIS in Random Permutations (Prototype)"
+    FONT_SIZE = 40
