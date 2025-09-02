@@ -20,33 +20,33 @@ class LisRandomPermutationsBase(Scene):
         self.play(Write(title), Write(params))
         self.wait(1)
 
-        # Grid layout
-        rows = VGroup()
-        for _ in range(self.M):
-            # Create a VGroup for each row to hold the numbers
-            row_group = VGroup()
-            rows.add(row_group)
-        
-        rows.arrange(DOWN, buff=0.7).next_to(params, DOWN, buff=0.5)
-        
-        # Animation loop
-        all_length_texts = VGroup()
+        # Two-row layout
+        rows = VGroup(*[VGroup() for _ in range(2)])
+        rows.arrange(DOWN, buff=1.5).next_to(params, DOWN, buff=0.5)
+
+        # Store mobjects for each of the 2 display rows
+        row_mobjects = [VGroup(), VGroup()]
+
+        # Animation loop for M permutations
         for i in range(self.M):
-            # 2.1 Generate and Display Permutation
+            current_row_index = i % 2
+            
+            # Clear the row before drawing
+            if len(row_mobjects[current_row_index]) > 0:
+                self.play(FadeOut(row_mobjects[current_row_index]), run_time=0.5)
+                row_mobjects[current_row_index].remove_all_subobjects()
+
+            # Generate and display permutation
             perm = list(range(self.N))
             random.shuffle(perm)
-            
             perm_mobs = VGroup(*[Text(str(x), font_size=self.FONT_SIZE) for x in perm])
-            perm_mobs.arrange(RIGHT, buff=0.4).move_to(rows[i])
-            rows[i].add(perm_mobs)
-
-            self.play(Write(perm_mobs), run_time=0.5)
-            self.wait(0.2)
-
-            # 2.2 LIS Highlighting
-            lis_len, lis_seq, _, _, _ = lis_dp(perm)
+            perm_mobs.arrange(RIGHT, buff=0.4).move_to(rows[current_row_index])
             
-            # Create a set of the LIS *elements* for quick lookup
+            self.play(Write(perm_mobs))
+            row_mobjects[current_row_index].add(perm_mobs)
+
+            # LIS Highlighting
+            lis_len, lis_seq, _, _, _ = lis_dp(perm)
             lis_elements = set(lis_seq)
             
             highlight_anims = []
@@ -57,19 +57,14 @@ class LisRandomPermutationsBase(Scene):
                 else:
                     highlight_anims.append(mob.animate.set_opacity(0.3))
             
-            self.play(*highlight_anims, run_time=0.5)
-            self.wait(0.2)
+            self.play(*highlight_anims)
 
-            # 2.3 Display LIS Length
+            # Display LIS Length
             length_text = Text(f"Length = {lis_len}", font_size=self.FONT_SIZE).next_to(perm_mobs, RIGHT, buff=0.5)
-            all_length_texts.add(length_text)
-            self.play(Write(length_text), run_time=0.3)
-            self.wait(0.5)
+            self.play(Write(length_text))
+            row_mobjects[current_row_index].add(length_text)
 
-        # Final summary text (optional)
-        avg_len = sum(int(re.search(r'\d+', lt.text).group()) for lt in all_length_texts) / self.M
-        avg_text = Text(f"Average LIS Length: {avg_len:.2f}", font_size=32).to_edge(DOWN)
-        self.play(Write(avg_text))
+            self.wait(1)
 
         self.wait(3)
 
