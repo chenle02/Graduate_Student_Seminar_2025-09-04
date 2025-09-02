@@ -672,7 +672,7 @@
   <section>
     <h2>LIS Example</h2>
     <p>Let's find the Longest Increasing Subsequence for:</p>
-    <pre><code data-line-numbers class="language-javascript" style="font-size: 1.5em;">[0, 1, 0, 3, 2, 3]</code></pre>
+    <pre style="text-align: center; font-size: 1.5em;">[0, 1, 0, 3, 2, 3]</pre>
   </section>
 
   <section>
@@ -725,7 +725,20 @@
   <section>
     <h3>Step 2: DP Calculation</h3>
     <p>For each element <code>arr[i]</code>, we look at all previous elements <code>arr[j]</code> (where j < i).</p>
-    <p>If <code>arr[j] < arr[i]</code> and <code>dp[j] + 1 > dp[i]</code>, we update <code>dp[i]</code> and set <code>prev[i] = j</code>.</p>
+    <div class="fragment">
+        <p style="text-align: center;">If these conditions are met:</p>
+        <ul style="margin: 0 auto; width: fit-content;">
+            <li><code>arr[j] &lt; arr[i]</code></li>
+            <li><code>dp[j] + 1 &gt; dp[i]</code></li>
+        </ul>
+    </div>
+    <div class="fragment">
+        <p style="text-align: center;">...then we update:</p>
+        <ul style="margin: 0 auto; width: fit-content;">
+            <li><code>dp[i] = dp[j] + 1</code></li>
+            <li><code>prev[i] = j</code></li>
+        </ul>
+    </div>
     <p class="fragment">Let's see it in action...</p>
   </section>
 
