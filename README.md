@@ -1,16 +1,19 @@
 # Auburn Graduate Student Seminar -- Math
 # 
-* Title: How Surfaces grow
-* Abstract: In this talk, we will explore the fascinating world of surface
-  growth phenomena, delving into the mathematical models that describe how
-  surfaces evolve over time. We will discuss key concepts such as scaling laws,
-  universality classes, and the role of stochastic processes in surface growth.
-  The talk will also highlight recent advancements in the field and their
-  applications in various scientific domains, including materials science and
-  biology. Attendees will gain a deeper understanding of the mathematical
-  frameworks used to analyze surface growth and the implications of these models
-  in real-world scenarios.  
-
+* Title: How do surfaces grow?
+* Abstract: How do surfaces grow, and why do so many look statistically alike?
+  This talk connects intuitive simulations with modern probability to explore
+  surface growth and universality. We begin with a CLT refresher as a baseline
+  for randomness, then show why it fails for growing interfaces: local
+  interactions and spatial-temporal dependencies break independence. Using
+  Tetris-like ballistic deposition (sticky and non-sticky) as model systems, we
+  compare simulated interfaces and empirical fluctuation scaling, and discuss
+  their relation to the KPZ universality class. We then highlight experimental
+  evidence from thin-film growth where universal scaling emerges in real
+  materials. Along the way, we emphasize what "universality" means, how scaling
+  exponents organize phenomena, and where open questions remain—such as
+  identifying non-KPZ behaviors. The goal is a concrete, visual understanding of
+  stochastic growth, bridging simulations, data, and theory.  
 
 ## Setup With uv
 
