@@ -109,6 +109,31 @@ This animation visualizes the correspondence:
 
 ---
 
+## 🎬 Animation Cases
+
+To make the animation concrete, we will produce two versions: a small prototype for clarity and a larger one for visual appeal.
+
+### Prototype Case (N=4)
+
+*   **Permutation**: Use a fixed permutation, e.g., `π = [3, 1, 4, 2]`.
+*   **LIS**: The LIS is `[1, 2]` or `[3, 4]`. We will highlight one of them.
+*   **Young Tableau**: Show the step-by-step RSK insertion for `[3, 1, 4, 2]`.
+    *   `3`: `[[3]]`
+    *   `1`: `[[1]]`, `3` is bumped. `[[1], [3]]`
+    *   `4`: `[[1, 4], [3]]`
+    *   `2`: `[[1, 2], [3]]`, `4` is bumped. `[[1, 2], [3, 4]]`
+*   **Goal**: Clearly illustrate the mechanics of the RSK algorithm and its connection to the LIS length.
+
+### Main Case (N=8)
+
+*   **Permutation**: Use a random permutation of `[1, ..., 8]`.
+*   **LIS**: Dynamically compute and highlight the LIS.
+*   **Young Tableau**: Show a faster, more fluid animation of the RSK insertion.
+*   **Corner Growth**: Animate the growth of the resulting Young diagram shape.
+*   **Goal**: Demonstrate the concepts on a more visually interesting example and show the typical shape that emerges.
+
+---
+
 ## 🛠️ Technical Notes
 
 * **Framework**: `manim` (Community Edition v0.19+)
