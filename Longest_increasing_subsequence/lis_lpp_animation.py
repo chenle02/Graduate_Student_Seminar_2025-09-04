@@ -122,7 +122,7 @@ class LisLppScene(Scene):
             },
         ).center()
 
-        grid_labels = grid.get_axis_labels(x_label="i", y_label="p_i")
+        grid_labels = grid.get_axis_labels(x_label="", y_label="")
         self.play(Create(grid), Write(grid_labels))
         self.wait(1)
 
@@ -145,7 +145,7 @@ class LisLppScene(Scene):
         self.play(
             *[perm_text_mobs[i].animate.set_color(RED) for i in lis_indices],
             *[dots[i].animate.set_color(RED).scale(1.2) for i in lis_indices],
-            *[dots[i].animate.set_color(GRAY).set_opacity(0.5) for i in range(N) if i not in lis_indices],
+            *[dots[i].animate.set_color(BLUE).scale(1.2) for i in range(N) if i not in lis_indices],
         )
         self.wait(1)
 
@@ -178,7 +178,7 @@ class LisLppScene(Scene):
         self.wait(1)
 
         # Display LIS text
-        lis_text_str = f"L = {lis_len}"
+        lis_text_str = f": L = {lis_len}"
         lis_text = Text(lis_text_str, font_size=28).next_to(perm_text_mobs, RIGHT, buff=0.5)
         self.play(Write(lis_text))
         self.wait(3)
