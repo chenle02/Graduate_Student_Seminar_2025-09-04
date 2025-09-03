@@ -32,21 +32,20 @@ This animation will visualize the connection between the Longest Increasing Subs
     *   The path from `(0,0)` to the first LIS point `(i_1, p_{i_1})` will go right to `(i_1, 0)` then up to `(i_1, p_{i_1})`.
     *   The path from the last LIS point `(i_k, p_{i_k})` will go right to `(N-1, p_{i_k})`.
 
+### Multi-Sample Animation
+
+To better illustrate the variability, the final animation will show 3 random samples for each case (N=4 and N=8).
+
+**Approach:**
+- Each scene (`LisLppPrototypeScene` and `LisLppScene`) will contain a loop that runs 3 times.
+- Inside the loop, the animation for a single sample will be generated as described in the scenes above.
+- Between each sample, the scene will be cleared (or faded out) before the next sample is shown.
+- A counter "Sample x/3" will be displayed to indicate the current sample number.
+
 ### Prototype with N=4
 
-For a quicker prototype, we can use `N=4`.
+The prototype will demonstrate the animation on 3 random samples with `N=4`.
 
-*   **Permutation**: `p = [2, 0, 3, 1]`. Points: `(0,2), (1,0), (2,3), (3,1)`.
-*   **LIS**: The LIS is `[0, 1]` (from `p_1=0, p_3=1`). LIS points: `(1,0)` and `(3,1)`.
-*   **Path**:
-    1.  Start at `(0,0)`.
-    2.  Go right to `(1,0)` (first LIS point).
-    3.  From `(1,0)`, go right to `(3,0)`, then up to `(3,1)` (second LIS point).
-    4.  The path is complete as it has reached the right boundary at `x=3`.
-*   **Animation Steps**:
-    1.  Show 4x4 grid (axes 0-3) and the 4 points.
-    2.  Show `p = [2, 0, 3, 1]` as text, then highlight `0` and `1`.
-    3.  Highlight `(1,0)` and `(3,1)` on the grid.
-    4.  Draw the path as described above.
-    5.  Display "LIS: [0, 1], Length: 2".
+*   **Permutation**: For each sample, a new random permutation `p` of `[0, 1, 2, 3]` will be generated.
+*   **Animation**: The animation will follow the steps described in Scene 1-3 for each sample.
 

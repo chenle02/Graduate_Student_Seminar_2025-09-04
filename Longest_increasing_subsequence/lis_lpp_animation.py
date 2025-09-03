@@ -28,8 +28,8 @@ class LisLppPrototypeScene(Scene):
 
         # Create grid
         grid = NumberPlane(
-            x_range=(-1, N, 1),
-            y_range=(-1, N, 1),
+            x_range=(0, N-1, 1),
+            y_range=(0, N-1, 1),
             x_length=5,
             y_length=5,
             axis_config={"include_tip": False, "stroke_opacity": 0.3},
@@ -109,17 +109,17 @@ class LisLppScene(Scene):
 
         # Create grid
         grid = NumberPlane(
-            x_range=(-1, N, 1),
-            y_range=(-1, N, 1),
-            x_length=7,
-            y_length=7,
+            x_range=(0, N-1, 1),
+            y_range=(0, N-1, 1),
+            x_length=6,
+            y_length=6,
             axis_config={"include_tip": False, "stroke_opacity": 0.3},
             x_axis_config={"numbers_to_include": np.arange(0, N)},
             y_axis_config={
                 "numbers_to_include": np.arange(0, N),
                 "label_direction": LEFT,
             },
-        ).next_to(perm_text_mobs, DOWN, buff=0.5)
+        ).next_to(perm_text_mobs, DOWN, buff=0.2).scale(0.9)
 
         self.play(Create(grid))
         self.wait(1)
