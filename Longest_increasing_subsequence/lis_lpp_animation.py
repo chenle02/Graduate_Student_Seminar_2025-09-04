@@ -119,7 +119,7 @@ class LisLppScene(Scene):
                 "numbers_to_include": np.arange(0, N),
                 "label_direction": LEFT,
             },
-        ).center()
+        ).next_to(perm_text_mobs, DOWN, buff=0.5)
 
         self.play(Create(grid))
         self.wait(1)
