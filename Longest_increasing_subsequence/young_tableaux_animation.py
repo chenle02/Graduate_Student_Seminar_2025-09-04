@@ -27,6 +27,9 @@ class PermutationToLISScene(Scene):
         N = 4
         p = [3, 1, 4, 2]
 
+        author_text = Text("Le Chen@Auburn, 2025/09", font_size=20).to_corner(DOWN + RIGHT, buff=0.5)
+        self.add(author_text)
+
         title = Text(f"Permutation to LIS (N={N})", font_size=36).to_edge(UP)
         perm_text = Text(f"π = {p}", font_size=28).next_to(title, DOWN)
         self.play(Write(title), Write(perm_text))
@@ -71,7 +74,8 @@ class RSKInsertionScene(Scene):
     def construct(self):
         p = [4, 2, 5, 1, 3]
         title = Text(f"Forward RSK: π = {p}", font_size=36).to_edge(UP)
-        self.play(Write(title))
+        author_text = Text("Le Chen@Auburn, 2025/09", font_size=20).to_corner(DOWN + RIGHT, buff=0.5)
+        self.play(Write(title), FadeIn(author_text))
 
         p_tableau_data = []
         q_tableau_data = []
