@@ -39,3 +39,4 @@
 
 ## Documentation
 - README upkeep: Update `README.md` (and relevant subfolder READMEs) whenever setup steps, dependencies, commands, paths, or usage change. Keep instructions current (e.g., uv usage, render scripts, media locations).
+- CSS usage: When adding or modifying styles (e.g., in `mystyle_2025.css`), update `README.md` to document the available classes/selectors and how to use them. Include short HTML examples when helpful.
