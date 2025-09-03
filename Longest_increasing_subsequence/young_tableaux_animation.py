@@ -76,11 +76,16 @@ class RSKInsertionScene(Scene):
         p_tableau_data = []
         q_tableau_data = []
 
-        p_table = Table([[""]]).to_edge(LEFT, buff=1)
-        q_table = Table([[""]]).to_edge(RIGHT, buff=1)
-        p_label = Text("P =").next_to(p_table, UP)
-        q_label = Text("Q =").next_to(q_table, UP)
-        self.play(Write(p_label), Write(q_label), Create(p_table), Create(q_table))
+        p_table = Table([[""]])
+        q_table = Table([[""]])
+        p_label = Text("P =")
+        q_label = Text("Q =")
+        # Keep P and Q neatly side-by-side using groups
+        p_group = VGroup(p_label, p_table).arrange(DOWN, buff=0.3, aligned_edge=LEFT)
+        q_group = VGroup(q_label, q_table).arrange(DOWN, buff=0.3, aligned_edge=LEFT)
+        p_group.to_edge(LEFT, buff=1)
+        q_group.to_edge(RIGHT, buff=1)
+        self.play(Create(p_table), Create(q_table), Write(p_label), Write(q_label))
 
         perm_mobs = VGroup(*[Text(str(x)) for x in p]).arrange(RIGHT).next_to(title, DOWN)
         self.play(Write(perm_mobs))
@@ -119,6 +124,13 @@ class RSKInsertionScene(Scene):
                 Transform(p_table, new_p_table),
                 Transform(q_table, new_q_table),
                 FadeOut(x_mob)
+            )
+            # Re-pack groups to preserve spacing after table size changes
+            p_group = VGroup(p_label, p_table).arrange(DOWN, buff=0.3, aligned_edge=LEFT)
+            q_group = VGroup(q_label, q_table).arrange(DOWN, buff=0.3, aligned_edge=LEFT)
+            self.play(
+                p_group.animate.to_edge(LEFT, buff=1),
+                q_group.animate.to_edge(RIGHT, buff=1),
             )
             self.wait(1)
             p_tableau_data = new_p_tableau
