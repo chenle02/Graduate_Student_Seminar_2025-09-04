@@ -40,8 +40,7 @@ class LisLppPrototypeScene(Scene):
             },
         ).center()
 
-        grid_labels = grid.get_axis_labels(x_label="", y_label="")
-        self.play(Create(grid), Write(grid_labels))
+        self.play(Create(grid))
         self.wait(0.5)
 
         # Plot points
@@ -58,7 +57,7 @@ class LisLppPrototypeScene(Scene):
         self.play(
             *[perm_text_mobs[i].animate.set_color(RED) for i in lis_indices],
             *[dots[i].animate.set_color(RED).scale(1.2) for i in lis_indices],
-            *[dots[i].animate.set_color(GRAY).set_opacity(0.5) for i in range(N) if i not in lis_indices],
+            *[dots[i].animate.set_color(GREEN).scale(1.2) for i in range(N) if i not in lis_indices],
         )
         self.wait(0.5)
 
@@ -122,8 +121,7 @@ class LisLppScene(Scene):
             },
         ).center()
 
-        grid_labels = grid.get_axis_labels(x_label="", y_label="")
-        self.play(Create(grid), Write(grid_labels))
+        self.play(Create(grid))
         self.wait(1)
 
         # Plot points
@@ -145,7 +143,7 @@ class LisLppScene(Scene):
         self.play(
             *[perm_text_mobs[i].animate.set_color(RED) for i in lis_indices],
             *[dots[i].animate.set_color(RED).scale(1.2) for i in lis_indices],
-            *[dots[i].animate.set_color(BLUE).scale(1.2) for i in range(N) if i not in lis_indices],
+            *[dots[i].animate.set_color(GREEN).scale(1.2) for i in range(N) if i not in lis_indices],
         )
         self.wait(1)
 
