@@ -34,10 +34,13 @@ class LisLppPrototypeScene(Scene):
             y_length=5,
             axis_config={"include_tip": False, "stroke_opacity": 0.3},
             x_axis_config={"numbers_to_include": np.arange(0, N)},
-            y_axis_config={"numbers_to_include": np.arange(0, N)},
+            y_axis_config={
+                "numbers_to_include": np.arange(0, N),
+                "label_direction": LEFT,
+            },
         ).center()
 
-        # grid_labels = grid.get_axis_labels(x_label="i", y_label="p_i")
+        grid_labels = grid.get_axis_labels(x_label="", y_label="")
         self.play(Create(grid), Write(grid_labels))
         self.wait(0.5)
 
@@ -79,8 +82,8 @@ class LisLppPrototypeScene(Scene):
         self.wait(0.5)
 
         # Display LIS text
-        lis_text_str = f"LIS: {lis_seq}, Length: {len(lis_seq)}"
-        lis_text = Text(lis_text_str, font_size=28).next_to(perm_text_mobs, DOWN)
+        lis_text_str = f"L = {len(lis_seq)}"
+        lis_text = Text(lis_text_str, font_size=28).next_to(perm_text_mobs, RIGHT, buff=0.5)
         self.play(Write(lis_text))
         self.wait(2)
 
@@ -113,7 +116,10 @@ class LisLppScene(Scene):
             y_length=7,
             axis_config={"include_tip": False, "stroke_opacity": 0.3},
             x_axis_config={"numbers_to_include": np.arange(0, N)},
-            y_axis_config={"numbers_to_include": np.arange(0, N)},
+            y_axis_config={
+                "numbers_to_include": np.arange(0, N),
+                "label_direction": LEFT,
+            },
         ).center()
 
         grid_labels = grid.get_axis_labels(x_label="i", y_label="p_i")
@@ -172,7 +178,7 @@ class LisLppScene(Scene):
         self.wait(1)
 
         # Display LIS text
-        lis_text_str = f"LIS: {lis_seq}, Length: {lis_len}"
-        lis_text = Text(lis_text_str, font_size=28).next_to(perm_text_mobs, DOWN)
+        lis_text_str = f"L = {lis_len}"
+        lis_text = Text(lis_text_str, font_size=28).next_to(perm_text_mobs, RIGHT, buff=0.5)
         self.play(Write(lis_text))
         self.wait(3)
