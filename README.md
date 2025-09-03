@@ -55,6 +55,13 @@ A `Makefile` is provided to simplify the rendering of Manim animations. From the
 
 The `Makefile` handles the creation of the `videos/` directory and copies the rendered animations to the correct location.
 
+## GitHub Pages
+
+- Live deck: https://chenle02.github.io/Graduate_Student_Seminar_2025-09-04/
+- Direct slide URL: https://chenle02.github.io/Graduate_Student_Seminar_2025-09-04/index.html
+
+If media does not autoplay over file://, use the Pages link above or run the local server.
+
 ## Custom Styles (mystyle_2025.css)
 
 Use these helper classes in `index.html` to get consistent layout and sizing:
