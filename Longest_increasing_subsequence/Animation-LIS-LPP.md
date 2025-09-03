@@ -2,51 +2,51 @@
 
 This animation will visualize the connection between the Longest Increasing Subsequence (LIS) of a random permutation and a simple Last-Passage Percolation (LPP) model.
 
-### Scene 1: Permutation as a Point Set
+### Scene 1: Permutation and Grid
 
-1.  **Grid Setup**:
-    *   Use Manim to create an 8x8 grid with axes labeled 1 to 8.
-    *   Add a title: "Random Permutation".
-2.  **Generate and Plot**:
-    *   Generate a random permutation `p` of `[1, ..., 8]`.
-    *   Animate plotting dots at coordinates `(i, p_i)` for `i` from 1 to 8.
+1.  **Grid and Permutation Setup**:
+    *   Use Manim to create a grid for `[0, ..., N-1] x [0, ..., N-1]`. For `N=8`, this is an 8x8 grid with axes labeled 0 to 7.
+    *   Generate a random permutation `p` of `[0, ..., N-1]`.
+    *   Display the permutation as text above the grid (e.g., `p = [2, 5, 0, 6, 3, 7, 1, 4]`).
+2.  **Plot Points**:
+    *   Animate plotting dots at coordinates `(i, p_i)` for `i` from 0 to `N-1`.
 
 ### Scene 2: Identifying the Longest Increasing Subsequence (LIS)
 
 1.  **Highlight LIS**:
-    *   Change title to "Longest Increasing Subsequence (LIS)".
-    *   Compute the LIS and highlight the corresponding dots (e.g., in red).
+    *   Compute the LIS of the permutation.
+    *   In the text representation of `p` above the grid, highlight the numbers belonging to the LIS.
+    *   On the grid, highlight the dots corresponding to the LIS (e.g., in red).
     *   Fade out the non-LIS dots (e.g., to gray).
 2.  **Display LIS**:
-    *   Show the subsequence and its length as text, e.g., "LIS: [2, 4, 6, 8], Length: 4".
+    *   Show the subsequence and its length as text.
 
 ### Scene 3: LIS as a Directed Path in a Grid
 
 1.  **Connect the Dots**:
     *   Change title to "LIS as a Longest Path".
-    *   Draw a path on the grid lines that connects the LIS points. The path must only move right or up.
+    *   Draw a path on the grid lines starting from `(0,0)`.
+    *   The path connects to the first LIS point, then connects the LIS points in sequence, and finally extends from the last LIS point to the right boundary (`x = N-1`).
+    *   The path must only move right or up.
     *   For two consecutive LIS points `(i, p_i)` and `(j, p_j)`, the path goes from `(i, p_i)` right to `(j, p_i)`, then up to `(j, p_j)`.
-2.  **Frame as LPP**:
-    *   This path represents the "longest path" through the sites, connecting LIS to Last-Passage Percolation.
-
-### Scene 4: Visualizing the Underlying Structure
-
-1.  **Forbidden Regions**:
-    *   To clarify the "increasing" constraint, for each point `(i, p_i)` in the permutation, briefly shade the "forbidden" rectangle of points `(x, y)` where `x > i` and `y < p_i`.
-    *   Animate to show that points in an increasing subsequence cannot be in each other's forbidden region.
-2.  **Final Picture**:
-    *   End with the clean LIS path from Scene 3, reinforcing the LPP connection.
+    *   The path from `(0,0)` to the first LIS point `(i_1, p_{i_1})` will go right to `(i_1, 0)` then up to `(i_1, p_{i_1})`.
+    *   The path from the last LIS point `(i_k, p_{i_k})` will go right to `(N-1, p_{i_k})`.
 
 ### Prototype with N=4
 
 For a quicker prototype, we can use `N=4`.
 
-*   **Permutation**: Let's use `p = [3, 1, 4, 2]`. The points are `(1,3), (2,1), (3,4), (4,2)`.
-*   **LIS**: The LIS is `[1, 2]` (from `p_2=1, p_4=2`) or `[3, 4]` (from `p_1=3, p_3=4`). Let's use `[3, 4]`. The LIS points are `(1,3)` and `(3,4)`.
-*   **Path**: The path will connect `(1,3)` and `(3,4)`. It goes right from `(1,3)` to `(3,3)`, then up to `(3,4)`.
+*   **Permutation**: `p = [2, 0, 3, 1]`. Points: `(0,2), (1,0), (2,3), (3,1)`.
+*   **LIS**: The LIS is `[0, 1]` (from `p_1=0, p_3=1`). LIS points: `(1,0)` and `(3,1)`.
+*   **Path**:
+    1.  Start at `(0,0)`.
+    2.  Go right to `(1,0)` (first LIS point).
+    3.  From `(1,0)`, go right to `(3,0)`, then up to `(3,1)` (second LIS point).
+    4.  The path is complete as it has reached the right boundary at `x=3`.
 *   **Animation Steps**:
-    1.  Show the 4x4 grid and the 4 points.
-    2.  Highlight `(1,3)` and `(3,4)` in red, dim the other two points.
-    3.  Draw the path from `(1,3)` to `(3,3)` to `(3,4)`.
-    4.  Display "LIS: [3, 4], Length: 2".
+    1.  Show 4x4 grid (axes 0-3) and the 4 points.
+    2.  Show `p = [2, 0, 3, 1]` as text, then highlight `0` and `1`.
+    3.  Highlight `(1,0)` and `(3,1)` on the grid.
+    4.  Draw the path as described above.
+    5.  Display "LIS: [0, 1], Length: 2".
 
