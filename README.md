@@ -92,7 +92,20 @@ Notes
 - Global images default to a generous height with rounded corners. Add `img-tall-slide` (or inline styles) if an image crowds formulas/captions.
 - ESC overview highlight is enhanced via CSS; no markup needed.
 
+## Acknowledgments
+
+- NSF: Support from DMS-CAREER and DMS-Probability awards.
+- Simons Foundation: Support acknowledged.
+- Manim: Animation engine used for LIS/RSK and visualizations — https://www.manim.community/
+- Reveal.js: Presentation framework powering `index.html` — https://revealjs.com/
+- Gemini CLI: Assisted ideation and refinement of some animations.
+- Codex CLI: Coding assistant used to help edit and maintain the repo — https://github.com/openai/codex-cli
+- SPDEs-Bib: Linked bibliographic resources — https://chenle02.github.io/SPDEs-Bib/index.html
+
 ## License & Attribution
 
-- License: See `LICENSE` for terms of use.
-- Attributions: External images/videos are credited in-slide. Linked references are included in `References_bib.html`.
+- Dual license:
+  - Code (e.g., `Longest_increasing_subsequence/`, `Makefile`, scripts): MIT — see `LICENSE-CODE`.
+  - Content (e.g., `index.html`, `assets/`, `videos/`, `movies/`, `mystyle_2025.css`): CC BY 4.0 — see `LICENSE-CONTENT`.
+- Vendored dependencies under `dist/`, `js/`, and `plugin/` retain their upstream licenses (e.g., Reveal.js under MIT).
+- Attributions: External images/videos are credited in-slide. References are linked in `References_bib.html` and in-slide citations.
