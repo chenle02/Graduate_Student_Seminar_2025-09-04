@@ -20,6 +20,7 @@
 - HTML/CSS: 2-space indentation; keep tags/attributes lowercase; group related sections with nested `<section>`.
 - Custom CSS: Add overrides in `mystyle_2025.css` (avoid modifying `dist/` files).
 - JS: Avoid editing `js/` unless bumping Reveal.js; initialize via `Reveal.initialize(...)` in `index.html` if needed.
+- **Manim**: For all Manim scenes, add the author credit "Le Chen @Auburn, 2025/09" to the bottom right corner. Example implementation: `Text("Le Chen@Auburn, 2025/09", font_size=20).to_corner(DOWN + RIGHT, buff=0.5)`.
 - Assets: Use descriptive names with underscores; mirror existing patterns (e.g., `Contrasting_Sand_and_Snow_Pile.png`, `config_piece_19_nonsticky_w=50_seed=10.mp4`).
 - Archive prior decks as separate HTML files (e.g., `index_2024.html`).
 

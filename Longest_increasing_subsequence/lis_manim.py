@@ -4,6 +4,9 @@ from Longest_increasing_subsequence.lis_dp import lis_dp, vdc_example
 
 class LisDPScene(Scene):
     def construct(self):
+        author_text = Text("Le Chen@Auburn, 2025/09", font_size=20).to_corner(DOWN + RIGHT, buff=0.5)
+        self.add(author_text)
+
         arr = vdc_example()
         n = len(arr)
 
