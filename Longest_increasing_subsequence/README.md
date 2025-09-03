@@ -66,6 +66,16 @@ Two additional animations are available to visualize the LIS for multiple random
 
 The generated videos will be named `LIS_Random_Small.mp4`, `LIS_Random_Large.mp4`, and `LIS_Random_Proto.mp4` and placed in the `videos/` directory.
 
+### LIS and Percolation Animation Plan
+
+An animation is planned to illustrate the connection between the Longest Increasing Subsequence (LIS) and a Last-Passage Percolation (LPP) model. The detailed plan for this animation is in `Animation-LIS-LPP.md`.
+
+**Core ideas to be animated:**
+- A random permutation visualized as points on a grid.
+- The LIS highlighted as a special set of points.
+- The LIS visualized as a "longest path" on the grid, moving only up and right.
+- The connection to LPP, where the LIS corresponds to a path that maximizes "weight".
+
 ## Storyboard (Manim)
 
 1. Show the full input sequence horizontally; label indices.
