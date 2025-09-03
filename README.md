@@ -54,3 +54,23 @@ A `Makefile` is provided to simplify the rendering of Manim animations. From the
 - `make clean`: Removes the `media/` directory created by Manim.
 
 The `Makefile` handles the creation of the `videos/` directory and copies the rendered animations to the correct location.
+
+## Custom Styles (mystyle_2025.css)
+
+Use these helper classes in `index.html` to get consistent layout and sizing:
+
+- `flex-container`: Side‑by‑side layout for media or cards. Wrap related blocks: `<div class="flex-container">…</div>`.
+- `coauthor-container`: Compact avatar + text card, intended inside `flex-container`.
+- `SimulationVideo`: Applies wide, responsive sizing to `<video>` elements used throughout the deck.
+- `video-grid`: Two‑column grid for multiple videos: `<div class="video-grid"><video …></video><video …></video></div>`.
+- `block`: Split view with a main video on the left and a right column; pair with `image-pair`.
+- `image-pair`: Vertical stack of two images (right column of `block`).
+- `source`: Small, italic credit line beneath media (images/videos).
+- `left-text`: Left‑align text when the default center alignment isn’t desired.
+- `bibtexnumber` / `bibtexitem`: Right‑aligned, slightly smaller typesetting for references/citations.
+- `theorem`: Subtle background highlight for theorem/definition callouts.
+- `img-tall-slide`: Constrain tall images so math or captions below remain visible; adds `max-height: 45vh`. Example: `<img class="img-tall-slide" src="…" />`.
+
+Notes
+- Global images default to a generous height with rounded corners. Add `img-tall-slide` (or inline styles) if an image crowds formulas/captions.
+- ESC overview highlight is enhanced via CSS; no markup needed.
