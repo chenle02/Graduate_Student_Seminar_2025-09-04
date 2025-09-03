@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Surface Growth with Tetris Pieces</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/night.css" id="theme" />
+  <link rel="stylesheet" href="mystyle.css" />
+
+</head>
+
+<body><div class="reveal"><div class="slides">
+
+
+<section>
+  <h3>Surface Growth Models with Random Tetris Pieces</h3><br>
+  <h4>Le Chen</h4>
+
+  <span style="font-size: 26px;">
+    <a href="mailto:le.chen@auburn.edu" style="font-size: 12px;">le.chen@auburn.edu</a> <br>
+    Department of Mathematics and Statistics<br>
+    Auburn University <br>
+  </span><br>
+
+  <p><span style="font-size: 24px;">
+        <a href="">Forum on Scientific and Engineering Computing 2024</a><br>
+        Chinese Academic of Science, Beijing, <br>
+        June 15-16, 2024
+  </span></p>
+</section>
+
+
+<section><!-- Acknowledgement -->
+  <section>
+    <p>Two graduate students who have been working on this project throughout</p>
+    <p>Math 7820/30: Applied Stochastic Processes (2023/24):</p>
+    <div class="flex-container">
+    <div class="coauthor-container">
+      <img src="./assets/mau.jpeg" alt="Mau" class="photo">
+      <p class="name">Mauricio Montes</p>
+      <p class="name"><a href="mailto:mauricio.montes@auburn.edu">mauricio.montes@auburn.edu</a></p>
+    </div>
+    <div class="coauthor-container">
+      <img src="./assets/ruau.jpg" alt="Ian" class="photo">
+      <p class="name">Ian Ruau</p>
+      <p class="name"><a href="mailto:ian.ruau@auburn.edu">ian.ruau@auburn.edu</a></p>
+    </div>
+    </div>
+  </section>
+
+  <section><!-- Funding -->
+    <div class="flex-container">
+    <div class="coauthor-container">
+      <img src="./assets/NSF.jpg" alt="NSF">
+      <p>DMS-Probability: No. 2246850 <br> (2023-2026)</p>
+    </div>
+    <div class="coauthor-container">
+      <img src="./assets/SF.png" alt="Simons">
+      <p>No. 959981 <br>  (2022-2027)</p>
+    </div>
+    </div>
+  </section>
+</section>
+
+
+<section>
+
+  <section>
+    <h3 class="r-fit-text">Sand pile at beach vs Snow pile in winter</h3>
+  </section>
+
+  <section>
+    <img src="./assets/resized/Contrasting_Sand_and_Snow_Pile.png" alt="Contrasting Sand and Snow Piles">
+    <p class="source">Image created by OpenAI's DALL-E</p>
+  </section>
+
+</section>
+
+<section>
+
+  <section>
+    <h3 class="r-fit-text">1980's</h3>
+  </section>
+
+  <section>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_19_nonsticky_w=50_seed=10.mp4"></video>
+      <img src="./assets/resized/slide_7_RD_1.png" alt="">
+    </div>
+    <p class="source">Simulation by <a href="https://github.com/chenle02/Simulations_on_Some_Surface_Growth_Models" target="_blank">Tetris-Ballistic package</a></p>
+  </section>
+
+  <section>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_19_sticky_w=50_seed=10.mp4"></video>
+      <img src="./assets/resized/Ballistic_Deposition_Demo.png" alt="">
+    </div>
+  </section>
+
+  <section>
+    <img src="./assets/resized/Compute_Flucutations.png" alt="">
+  </section>
+
+  <section>
+    <p>Fluctuations $t↦ W(L,t)$</p>
+    <div class="flex-container">
+      <div><img src="./assets/exp11/combined_original_nonsticky_piece_19.png" alt=""><p>Nonsticky</p></div>
+      <div><img src="./assets/exp11/combined_original_sticky_piece_19.png" alt=""><p>Sticky</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p>$t↦ \log W(L,t)$</p>
+    <div class="flex-container">
+      <div><img src="./assets/exp11/combined_loglog_plot_nonsticky_piece_19.png" alt=""><p>Nonsticky</p></div>
+      <div><img src="./assets/exp11/combined_loglog_plot_sticky_piece_19.png" alt=""><p>Sticky</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="r-fit-text">Family-Vicsek scaling relation</p>
+    <div align="right" class="bibtexnumber">
+      [<a name="family.vicsek:85:scaling">3</a>]
+      F.&nbsp;Family and T.&nbsp;Vicsek.
+       Scaling of the active zone in the eden process on percolation
+        networks and the ballistic deposition model.
+       <em>Journal of Physics A: Mathematical and General</em>, 18(2):L75, feb
+        1985.
+      [&nbsp;<a href="References_bib.html#family.vicsek:85:scaling">bib</a>&nbsp;|
+      <a href="http://dx.doi.org/10.1088/0305-4470/18/2/005">DOI</a>&nbsp;|
+      <a href="https://dx.doi.org/10.1088/0305-4470/18/2/005">http</a>&nbsp;]
+    </div>
+  </section>
+  <section>
+    \begin{align*}
+      W(L,t) ∼ L^β f\left(t/L^γ\right), \quad β = 1/2, \quad γ = 3/2.
+    \end{align*}
+    \begin{align*}
+      f(x) \sim
+      \begin{cases}
+        x^ν, & x ≪ 1, \\
+        1,   & x ≫ 1,
+      \end{cases}
+     \quad ν = 0.30 ± 0.02.
+    \end{align*}
+  </section>
+
+  <section>
+    <p class="r-fit-text">Kardar-Parisi-Zhang (KPZ) Equation</p>
+    <div align="right" class="bibtexnumber">
+      [<a name="kardar.parisi.ea:86:dynamic">4</a>]
+      M.&nbsp;Kardar, G.&nbsp;Parisi, and Y.-C. Zhang.
+       Dynamic scaling of growing interfaces.
+       <em>Phys. Rev. Lett.</em>, 56(9):889, 1986.
+      [&nbsp;<a href="References_bib.html#kardar.parisi.ea:86:dynamic">bib</a>&nbsp;|
+      <a href="http://dx.doi.org/10.1103/PhysRevLett.56.889">DOI</a>&nbsp;|
+      <a href="https://doi.org/10.1103/PhysRevLett.56.889">http</a>&nbsp;]
+    </div>
+
+    \begin{align*}
+      ∂_t h(t,x) = ν ∇^2 h + λ(∇ h)^2 + η
+    \end{align*}
+
+    <!-- \begin{align*} -->
+    <!--   ∂_t h(t,x) = ν ∇^2 h(t,x) + λ (∇ h(t,x))^2 + η(t,x), \quad t>0, x∈ ℝ. -->
+    <!-- \end{align*} -->
+  </section>
+
+  <section>
+    <img src="./assets/latteral_growth.png" alt=""/>
+    <p>If $|∇ h|$ is small, then </p>
+    \begin{align*}
+      δ h = \sqrt{(v δ t)^2 + (v δ t ∇ h)^2 } ≈ (v δ t) (1 + (∇ h)^2/2)
+    \end{align*}
+    \begin{align*}
+      \frac{𝜕 h(t,x)}{𝜕 t} = v + \frac{v}{2} (\nabla h )^2 + ⋯
+    \end{align*}
+  </section>
+</section>
+
+<section>
+
+  <section>
+    <h3 class="r-fit-text">More examples</h3>
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Paper inking</h3>
+    <div align="right" class="bibtexnumber">
+      [<a name="barabasi.stanley:95:fractal">1</a>]
+      A.-L. Barabási and H.&nbsp;E. Stanley.
+       <em>Fractal concepts in surface growth</em>.
+       Cambridge University Press, Cambridge, 1995.
+      [&nbsp;<a href="References_bib.html#barabasi.stanley:95:fractal">bib</a>&nbsp;|
+      <a href="http://dx.doi.org/10.1017/CBO9780511599798">DOI</a>&nbsp;|
+      <a href="https://doi.org/10.1017/CBO9780511599798">http</a>&nbsp;]
+    </div>
+  </section>
+
+  <section>
+    <img src="./assets/resized/Figure_1-2_Paper-ink.png" alt="">
+  </section>
+
+  <section>
+    <img src="./assets/resized/Figure_1-2_PaperInk-b-c.png" alt="">
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Paper burning</h3>
+    <div align="right" class="bibtexnumber">
+      [<a name="zhang.zhang.ea:92:modeling">5</a>]
+      J.&nbsp;Zhang, Y.-C. Zhang, P.&nbsp;Alstrøm, and M.&nbsp;Levinsen.
+       Modeling forest fire by a paper-burning experiment, a realization of
+        the interface growth mechanism.
+       <em>Phys. A: Stat. Mech. Appl.</em>, 189(3):383--389, 1992.
+      [&nbsp;<a href="References_bib.html#zhang.zhang.ea:92:modeling">bib</a>&nbsp;|
+      <a href="https://doi.org/10.1016/0378-4371(92)90050-Z">DOI</a>&nbsp;|
+      <a href="https://www.sciencedirect.com/science/article/pii/037843719290050Z">http</a>&nbsp;]
+    </div>
+  </section>
+
+  <section>
+    <img src="./assets/resized/Figure_1-3_Paper_Fire.png" alt="Paper burning experiment">
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Paper as random environment</h3>
+    <img src="./assets/paper_fibers.png" alt="Paper burning experiment">
+    <div align="right" class="bibtexnumber">
+    [<a name="zhang.zhang.ea:92:modeling">7</a>]
+    J.&nbsp;Zhang, Y.-C. Zhang, P.&nbsp;Alstr&oslash;m, and M.&nbsp;Levinsen.
+     Modeling forest fire by a paper-burning experiment, a realization of
+      the interface growth mechanism.
+     <em>Phys. A: Stat. Mech. Appl.</em>, 189(3):383--389, 1992.
+    [&nbsp;<a href="References_bib.html#zhang.zhang.ea:92:modeling">bib</a>&nbsp;| 
+    <a href="https://doi.org/10.1016/0378-4371(92)90050-Z">DOI</a>&nbsp;| 
+    <a href="https://www.sciencedirect.com/science/article/pii/037843719290050Z">http</a>&nbsp;]
+    </td>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Snow pile in one dimension</h3>
+    <div align="right" class="bibtexnumber">
+      [<a name="barabasi.stanley:95:fractal">1</a>]
+      A.-L. Barabási and H.&nbsp;E. Stanley.
+       <em>Fractal concepts in surface growth</em>.
+       Cambridge University Press, Cambridge, 1995.
+      [&nbsp;<a href="References_bib.html#barabasi.stanley:95:fractal">bib</a>&nbsp;|
+      <a href="http://dx.doi.org/10.1017/CBO9780511599798">DOI</a>&nbsp;|
+      <a href="https://doi.org/10.1017/CBO9780511599798">http</a>&nbsp;]
+    </div>
+  </section>
+
+  <section>
+    <img src="./assets/resized/Snow_Real.png" alt="One dimensional snow experiment">
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Gaussian orthogonal ensemble (GOE)</h3>
+    <img src="./assets/resized/Wigner_5000.png" alt="">
+    <p class="source">Simulation by <a href="https://pypi.org/project/scikit-rmt/" target="_blank">scikit-rmt package</a></p>
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Longest increasing subsequence</h3>
+    <div align="right" class="bibtexnumber">
+      [<a name="baik.deift.ea:99:on">1</a>]
+      J.&nbsp;Baik, P.&nbsp;Deift, and K.&nbsp;Johansson.
+       On the distribution of the length of the longest increasing
+        subsequence of random permutations.
+       <em>J. Amer. Math. Soc.</em>, 12(4):1119--1178, 1999.
+      [&nbsp;<a href="References_bib.html#baik.deift.ea:99:on">bib</a>&nbsp;|
+      <a href="http://dx.doi.org/10.1090/S0894-0347-99-00307-0">DOI</a>&nbsp;|
+      <a href="https://doi.org/10.1090/S0894-0347-99-00307-0">http</a>&nbsp;]
+    </div>
+  </section>
+
+  <section>
+    <div class="three-columns-grid">
+      <ul>
+
+        <li>Permutations</li>
+        <li>LIS</li>
+        <li>Length</li>
+
+        <li>0,1,2,3</li>
+        <li>0,1,2,3</li>
+        <li>4</li>
+
+        <li>3,2,1,0</li>
+        <li>3 (or 2 ...)</li>
+        <li>1</li>
+
+        <li>2,1,0,3</li>
+        <li>0,3</li>
+        <li>2</li>
+      </ul>
+    </div>
+  </section>
+
+ <section>
+    <div class="three-columns-grid">
+      <p>A random permutation of $N=16$ <br><br>
+        0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15.
+      </p>
+      <br>
+      <ul>
+
+        <li></li>
+        <li>LIS</li>
+        <li>Length</li>
+
+        <li></li>
+        <li>0,2,6,9,11,15</li>
+        <li>6</li>
+
+        <li></li>
+        <li>0,4,6,9,11,15</li>
+        <li>6</li>
+
+        <li></li>
+        <li>0,2,6,9,13,15</li>
+        <li>6</li>
+
+        <li></li>
+        <li>0,4,6,9,13,15</li>
+        <li>6</li>
+
+      </ul>
+    </div>
+    <br>
+    <p class="source">Example from <a href="https://en.wikipedia.org/wiki/Longest_increasing_subsequence">Wikipedia</a> </p>
+ </section>
+
+  <section>
+    <h3 class="r-fit-text">Growing interfaces in a thin film</h3>
+
+    <div align="right" class="bibtexnumber">
+      [<a name="takeuchi.sano.ea:11:growing">5</a>]
+      </td>
+      <td class="bibtexitem">
+      K.&nbsp;A. Takeuchi, M.&nbsp;Sano, T.&nbsp;Sasamoto, and H.&nbsp;Spohn.
+       Growing interfaces uncover universal fluctuations behind scale
+        invariance.
+       <em>Sci. Rep.</em>, 1(1):1--5, 2011.
+      [&nbsp;<a href="References_bib.html#takeuchi.sano.ea:11:growing">bib</a>&nbsp;]
+    </div>
+
+  </section>
+  <section>
+    <video class="SimulationVideo" controls autoplay src="./movies/MOESM2.mov"></video>
+  </section>
+  <section>
+    <video class="SimulationVideo" controls autoplay src="./movies/MOESM3.mov"></video>
+  </section>
+  <section>
+    <img src="./assets/Takeuchi_Figure_2.png" alt="">
+  </section>
+
+</section>
+
+<section>
+
+  <section>
+    <img src="./assets/resized/Parisi.png" alt="">
+  </section>
+
+  <section>
+    <img src="./assets/resized/Hairer.png" alt="">
+  </section>
+
+</section>
+
+<section>
+
+  <section>
+    <h3 class="r-fit-text">KPZ Universality Class</h3>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h3 class="r-fit-text">Tetris Pieces?</h3>
+  </section>
+
+  <section>
+    <video controls>
+      <source src="./videos/Tetris_Trailer.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <section>
+    <h6>1x1; nonsticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_19_nonsticky_w=50_seed=10.mp4"></video>
+      <img src="./assets/exp11/combined_loglog_plot_nonsticky_piece_19.png" alt="" style="">
+    </div>
+  </section>
+
+  <section>
+    <h6>1x1; sticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_19_sticky_w=50_seed=10.mp4"></video>
+      <img src="./assets/exp11/combined_loglog_plot_sticky_piece_19.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>2x2; nonsticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_0_nonsticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_nonsticky_piece_0.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>2x2; sticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_0_sticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_sticky_piece_0.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+
+  <section>
+    <h6>L4; nonsticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_5_nonsticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_nonsticky_piece_5.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>L4; sticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_5_sticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_sticky_piece_5.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>L1, L2, L3, L4; nonsticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_type_2_nonsticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_nonsticky_type_2.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>L1, L2, L3, L4; sticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_type_2_sticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_sticky_type_2.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>All Tetris Pieces; nonsticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_all_nonsticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_nonsticky_piece_all.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <h6>All Tetris pieces; sticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_all_sticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_sticky_piece_all.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <div class="flex-container">Are there any non KPZ types?</div>
+  </section>
+
+  <section>
+    <h6>4x1; nonsticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_2_nonsticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_nonsticky_piece_2.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+  <section>
+    <div class="flex-container">But when it is sticky...</div>
+  </section>
+
+  <section>
+    <h6>4x1; sticky</h6>
+    <div class="flex-container">
+      <video class="SimulationVideo" controls autoplay src="./videos/config_piece_2_sticky_w=50_seed=10.mp4"></video>
+      <img class="fragment fade-in" src="./assets/exp11/combined_loglog_plot_sticky_piece_2.png" alt="" style="max-height: 600px; width: auto; border-radius: 30%; margin: 0 20px">
+    </div>
+  </section>
+
+</section>
+
+<section>
+
+  <section>
+    <h3 class="r-fit-text">Any crossover of Gaussian and KPZ?</h3>
+  </section>
+
+  <section>
+    <div class="block">
+      <video controls>
+        <source src="./assets/exp13/config_piece_19_combined_percentage_05_w=50_seed=10.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="image-pair">
+        <p class="r-fit-text">5% nonsticky + 95% sticky</p>
+        <img src="./assets/exp13/combined_loglog_plot_combined_percentage_05.png" alt="Log-Log Plot 05%"/>
+        <img src="./assets/exp13/combined_original_combined_percentage_05.png" alt="Original 05%"/>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="block">
+      <video controls>
+          <source src="./assets/exp13/config_piece_19_combined_percentage_50_w=50_seed=10.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+        <div class="image-pair">
+          <p class="r-fit-text">50% nonsticky + 50% sticky</p>
+          <img src="./assets/exp13/combined_loglog_plot_combined_percentage_50.png" alt="Log-Log Plot 50%"/>
+          <img src="./assets/exp13/combined_original_combined_percentage_50.png" alt="Original 50%"/>
+        </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="block">
+      <video controls>
+          <source src="./assets/exp13/config_piece_19_combined_percentage_90_w=50_seed=10.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+      <div class="image-pair">
+          <p class="r-fit-text">90% nonsticky + 10% sticky</p>
+          <img src="./assets/exp13/combined_loglog_plot_combined_percentage_90.png" alt="Log-Log Plot 90%"/>
+          <img src="./assets/exp13/combined_original_combined_percentage_90.png" alt="Original 90%"/>
+      </div>
+  </section>
+
+  <section>
+    <div class="block">
+      <video controls>
+        <source src="./assets/exp13/config_piece_19_combined_percentage_95_w=50_seed=10.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="image-pair">
+        <p class="r-fit-text">95% nonsticky + 5% sticky</p>
+        <img src="./assets/exp13/combined_loglog_plot_combined_percentage_95.png" alt="Log-Log Plot 95%"/>
+        <img src="./assets/exp13/combined_original_combined_percentage_95.png" alt="Original 95%"/>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="block">
+      <video controls>
+          <source src="./assets/exp13/config_piece_19_combined_percentage_98_w=50_seed=10.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+      <div class="image-pair">
+        <p class="r-fit-text">98% nonsticky + 2% sticky</p>
+        <img src="./assets/exp13/combined_original_combined_percentage_98.png" alt="Original 98%"/>
+        <img src="./assets/exp13/combined_loglog_plot_combined_percentage_98.png" alt="Log-Log Plot 98%"/>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="block">
+      <video controls>
+        <source src="./assets/exp13/config_piece_19_combined_percentage_99_w=50_seed=10.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="image-pair">
+        <p class="r-fit-text">99% nonsticky + 1% sticky</p>
+        <img src="./assets/exp13/combined_loglog_plot_combined_percentage_99.png" alt="Log-Log Plot 99%"/>
+        <img src="./assets/exp13/combined_original_combined_percentage_99.png" alt="Original 99%"/>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<section>
+
+  <section>
+    <h2>Install</h2>
+    <h3>PyPI: Tetris Ballistic</h3>
+    <p><a href="https://pypi.org/project/tetris-ballistic/" target="_blank">Visit on PyPI</a></p>
+  </section>
+
+  <section>
+    <h2>Source code</h2>
+    <h3>GitHub: Simulations on Some Surface Growth Models</h3>
+    <p><a href="https://github.com/chenle02/Simulations_on_Some_Surface_Growth_Models" target="_blank">Visit on GitHub</a></p>
+  </section>
+
+</section>
+
+
+<section>
+
+  <section>
+    <!-- <p>Our understanding of surface growth is still very limited...</p> -->
+    <h3 class="r-fit-text">Our understanding of surface growth is</h3>
+    <h3 class="r-fit-text">still VERY LIMITED...</h3>
+  </section>
+
+  <section>
+    <h3 class="r-fit-text">Diffusion-limited aggregation (DLA)</h3>
+
+    <div align="right" class="bibtexnumber">
+      [<a name="witten.sander:81:diffusion-limited">5</a>]
+      T.&nbsp;A. Witten and L.&nbsp;M. Sander.
+       Diffusion-limited aggregation, a kinetic critical phenomenon.
+       <em>Phys. Rev. Lett.</em>, 47:1400--1403, 1981-11.
+      [&nbsp;<a href="References_bib.html#witten.sander:81:diffusion-limited">bib</a>&nbsp;|
+      <a href="http://dx.doi.org/10.1103/PhysRevLett.47.1400">DOI</a>&nbsp;|
+      <a href="https://link.aps.org/doi/10.1103/PhysRevLett.47.1400">http</a>&nbsp;]
+    </div>
+  </section>
+
+  <section>
+    <img src="./assets/resized/Figure_19-1_DLA.png" alt="">
+  </section>
+
+  <section>
+    <video class="SimulationVideo" controls autoplay src="./dla/output.mp4"></video>
+    <p class="source">Simulation by <a href="https://github.com/markstock/dla-nd">markstock/dla-nd</a><p>
+  </section>
+
+  <section>
+    <img src="./assets/resized/bacterer_colonies.jpg" alt="">
+    <p class="source">Image from <a href="https://www.nsf.gov/news/mmg/mmg_disp.jsp?med_id=67192" target="_blank">NSF News 2010</a></p>
+  </section>
+
+</section>
+
+<section>
+  <section>
+    <h2 class="r-fit-text">Educational components</h2>
+  </section>
+
+  <section>
+    <div>
+      <ul>
+        <li class="fragment">Besides Mathematics itself...</li> <br>
+        <li class="fragment">Programming assisted by</li>
+            <ul class="fragment">
+              <li>ChatGPT 4.0</li>
+              <li>GitHub Copilot</li>
+              <li>...</li>
+            </ul>
+        <li class="fragment">Workflow with version control via Git and GitHub</li>
+        <li class="fragment">Efficient tools</li>
+            <ul class="fragment">
+              <li>Terminal</li>
+              <li>vim/neovim (by the way, I am using vim.)</li>
+              <li>...</li>
+            </ul>
+      </ul>
+    </div>
+  </section>
+    
+</section>
+
+<section>
+
+  <h5>Referneces</h5>
+  <div style="overflow-y: auto; max-height: 700px; font-size: 16px;"> <!-- Adjust for scrolling and readability -->
+        
+  <table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="baik.deift.ea:99:on">1</a>]
+</td>
+<td class="bibtexitem">
+J.&nbsp;Baik, P.&nbsp;Deift, and K.&nbsp;Johansson.
+ On the distribution of the length of the longest increasing
+  subsequence of random permutations.
+ <em>J. Amer. Math. Soc.</em>, 12(4):1119--1178, 1999.
+[&nbsp;<a href="References_bib.html#baik.deift.ea:99:on">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1090/S0894-0347-99-00307-0">DOI</a>&nbsp;| 
+<a href="https://doi.org/10.1090/S0894-0347-99-00307-0">http</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="barabasi.stanley:95:fractal">2</a>]
+</td>
+<td class="bibtexitem">
+A.-L. Barab&aacute;si and H.&nbsp;E. Stanley.
+ <em>Fractal concepts in surface growth</em>.
+ Cambridge University Press, Cambridge, 1995.
+[&nbsp;<a href="References_bib.html#barabasi.stanley:95:fractal">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1017/CBO9780511599798">DOI</a>&nbsp;| 
+<a href="https://doi.org/10.1017/CBO9780511599798">http</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="family.vicsek:85:scaling">3</a>]
+</td>
+<td class="bibtexitem">
+F.&nbsp;Family and T.&nbsp;Vicsek.
+ Scaling of the active zone in the eden process on percolation
+  networks and the ballistic deposition model.
+ <em>Journal of Physics A: Mathematical and General</em>, 18(2):L75, feb
+  1985.
+[&nbsp;<a href="References_bib.html#family.vicsek:85:scaling">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1088/0305-4470/18/2/005">DOI</a>&nbsp;| 
+<a href="https://dx.doi.org/10.1088/0305-4470/18/2/005">http</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="kardar.parisi.ea:86:dynamic">4</a>]
+</td>
+<td class="bibtexitem">
+M.&nbsp;Kardar, G.&nbsp;Parisi, and Y.-C. Zhang.
+ Dynamic scaling of growing interfaces.
+ <em>Phys. Rev. Lett.</em>, 56(9):889, 1986.
+[&nbsp;<a href="References_bib.html#kardar.parisi.ea:86:dynamic">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1103/PhysRevLett.56.889">DOI</a>&nbsp;| 
+<a href="https://doi.org/10.1103/PhysRevLett.56.889">http</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="takeuchi.sano.ea:11:growing">5</a>]
+</td>
+<td class="bibtexitem">
+K.&nbsp;A. Takeuchi, M.&nbsp;Sano, T.&nbsp;Sasamoto, and H.&nbsp;Spohn.
+ Growing interfaces uncover universal fluctuations behind scale
+  invariance.
+ <em>Sci. Rep.</em>, 1(1):1--5, 2011.
+[&nbsp;<a href="References_bib.html#takeuchi.sano.ea:11:growing">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="witten.sander:81:diffusion-limited">6</a>]
+</td>
+<td class="bibtexitem">
+T.&nbsp;A. Witten and L.&nbsp;M. Sander.
+ Diffusion-limited aggregation, a kinetic critical phenomenon.
+ <em>Phys. Rev. Lett.</em>, 47:1400--1403, Nov 1981.
+[&nbsp;<a href="References_bib.html#witten.sander:81:diffusion-limited">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1103/PhysRevLett.47.1400">DOI</a>&nbsp;| 
+<a href="https://link.aps.org/doi/10.1103/PhysRevLett.47.1400">http</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="zhang.zhang.ea:92:modeling">7</a>]
+</td>
+<td class="bibtexitem">
+J.&nbsp;Zhang, Y.-C. Zhang, P.&nbsp;Alstr&oslash;m, and M.&nbsp;Levinsen.
+ Modeling forest fire by a paper-burning experiment, a realization of
+  the interface growth mechanism.
+ </img>Phys. A: Stat. Mech. Appl.</em>, 189(3):383--389, 1992.
+[&nbsp;<a href="References_bib.html#zhang.zhang.ea:92:modeling">bib</a>&nbsp;| 
+<a href="https://doi.org/10.1016/0378-4371(92)90050-Z">DOI</a>&nbsp;| 
+<a href="https://www.sciencedirect.com/science/article/pii/037843719290050Z">http</a>&nbsp;]
+
+</td>
+</tr>
+</table>
+  </div>
+</section>
+
+<section>
+  <h3 class="r-fit-text">Thank you!</h3>
+</section>
+
+</div></div>
+<script src="dist/reveal.js"></script>
+<script src="plugin/math/math.js"></script>
+<script>
+  Reveal.initialize({
+    history: true,
+    transition: "linear",
+
+    mathjax2: {
+      config: "TeX-AMS_HTML-full",
+      TeX: {
+        Macros: {
+          R: "\\mathbb{R}",
+          set: ["\\left\\{#1 \\; ; \\; #2\\right\\}", 2],
+        },
+      },
+    },
+
+    // There are three typesetters available
+    // RevealMath.MathJax2 (default)
+    // RevealMath.MathJax3
+    // RevealMath.KaTeX
+    //
+    // More info at https://revealjs.com/math/
+    plugins: [RevealMath.MathJax2],
+  });
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Select all video elements with the class 'SimulationVideo'
+    var videos = document.querySelectorAll('.SimulationVideo');
+
+    // Loop through the NodeList of selected videos
+    videos.forEach((video) => {
+      video.playbackRate = 2.2;
+
+      video.addEventListener('ended', () => {
+        // Seek to the last frame (workaround by subtracting a small value)
+        // Adjust the subtracted value as needed based on testing
+        video.currentTime = Math.max(0, video.duration - 0.01);
+      });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+      // Select all video elements
+      var videos = document.getElementsByTagName('video');
+      // Loop through all video elements and set attributes
+      for (var i = 0; i < videos.length; i++) {
+          videos[i].setAttribute('autoplay', true);
+          videos[i].setAttribute('loop', true);
+          videos[i].setAttribute('muted', true); // Necessary for autoplay in most browsers
+      }
+  });
+</script>
+</body></html>
+
