@@ -94,7 +94,7 @@ Notes
 
 ## Acknowledgments
 
-- NSF: Support from DMS-CAREER and DMS-Probability awards.
+- NSF: DMS-CAREER No. 2443823 (2025–2030) — https://www.nsf.gov/awardsearch/showAward?AWD_ID=2443823; DMS-Probability No. 2246850 (2023–2026) — https://www.nsf.gov/awardsearch/showAward?AWD_ID=2246850.
 - Simons Foundation: Support acknowledged.
 - Manim: Animation engine used for LIS/RSK and visualizations — https://www.manim.community/
 - Reveal.js: Presentation framework powering `index.html` — https://revealjs.com/
