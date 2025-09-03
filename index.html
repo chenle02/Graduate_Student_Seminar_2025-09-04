@@ -316,7 +316,7 @@
     </div>
 
     \begin{align*}
-      ∂_t h(t,x) = ν ∇^2 h + λ(∇ h)^2 + η
+      ∂_t h(t,x) = ν ∇^2 h + λ(∇ h)^2 + \textcolor{red}{η}
     \end{align*}
   </section>
 
@@ -1020,6 +1020,8 @@
     mathjax2: {
       config: "TeX-AMS_HTML-full",
       TeX: {
+        // Enable LaTeX color commands like \textcolor, \colorbox
+        extensions: ["color.js"],
         Macros: {
           R: "\\mathbb{R}",
           set: ["\\left\\{#1 \\; ; \\; #2\\right\\}", 2],
