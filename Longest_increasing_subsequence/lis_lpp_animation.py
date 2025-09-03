@@ -37,7 +37,7 @@ class LisLppPrototypeScene(Scene):
             y_axis_config={"numbers_to_include": np.arange(0, N)},
         ).center()
 
-        grid_labels = grid.get_axis_labels(x_label="i", y_label="p_i")
+        # grid_labels = grid.get_axis_labels(x_label="i", y_label="p_i")
         self.play(Create(grid), Write(grid_labels))
         self.wait(0.5)
 
