@@ -1,7 +1,24 @@
-# Auburn Graduate Student Seminar -- Math
-# 
-* Title: How do surfaces grow?
-* Abstract: How do surfaces grow, and why do so many look statistically alike?
+# Auburn Graduate Student Seminar — Math
+
+## Overview
+
+- Event: Graduate Student Seminar, Department of Mathematics & Statistics, Auburn University
+- Date: September 3, 2025 (09/03/2025)
+- Speaker: Le Chen
+- Talk title: How do surfaces grow?
+
+This repository contains the Reveal.js slide deck (`index.html`) and supporting media for the seminar. The deck is a static site; open locally or via GitHub Pages.
+
+## Live Deck
+
+- GitHub Pages: https://chenle02.github.io/Graduate_Student_Seminar_2025-09-04/
+- Direct slide URL: https://chenle02.github.io/Graduate_Student_Seminar_2025-09-04/index.html
+
+If media does not autoplay over `file://`, use the Pages link above or run a local server.
+
+## Abstract
+
+How do surfaces grow, and why do so many look statistically alike?
   This talk connects intuitive simulations with modern probability to explore
   surface growth and universality. We begin with a CLT refresher as a baseline
   for randomness, then show why it fails for growing interfaces: local
@@ -15,7 +32,7 @@
   identifying non-KPZ behaviors. The goal is a concrete, visual understanding of
   stochastic growth, bridging simulations, data, and theory.  
 
-## Setup With uv
+## Local Setup (uv optional)
 
 - Install uv:
   - macOS (brew): `brew install uv`
@@ -33,11 +50,11 @@
   - Windows: Install FFmpeg and add it to PATH.
 - LaTeX (optional, for TeX text in scenes): TeX Live or MiKTeX.
 
-## Common Commands
+## How To View
 
-- Serve slides: `uv run -s serve` then open `http://localhost:8000/index.html`.
-- Render LIS animation (after scene is added): `uv run -s render_lis`.
-- Manual serve alternative: `uv run python -m http.server 8000`.
+- Quick open: Open `index.html` directly in a browser (some media may not autoplay).
+- Local server (recommended): `python3 -m http.server 8000` and visit `http://localhost:8000/index.html`.
+- With uv: `uv run python -m http.server 8000`.
 
 ## Notes
 
@@ -54,13 +71,6 @@ A `Makefile` is provided to simplify the rendering of Manim animations. From the
 - `make clean`: Removes the `media/` directory created by Manim.
 
 The `Makefile` handles the creation of the `videos/` directory and copies the rendered animations to the correct location.
-
-## GitHub Pages
-
-- Live deck: https://chenle02.github.io/Graduate_Student_Seminar_2025-09-04/
-- Direct slide URL: https://chenle02.github.io/Graduate_Student_Seminar_2025-09-04/index.html
-
-If media does not autoplay over file://, use the Pages link above or run the local server.
 
 ## Custom Styles (mystyle_2025.css)
 
@@ -81,3 +91,8 @@ Use these helper classes in `index.html` to get consistent layout and sizing:
 Notes
 - Global images default to a generous height with rounded corners. Add `img-tall-slide` (or inline styles) if an image crowds formulas/captions.
 - ESC overview highlight is enhanced via CSS; no markup needed.
+
+## License & Attribution
+
+- License: See `LICENSE` for terms of use.
+- Attributions: External images/videos are credited in-slide. Linked references are included in `References_bib.html`.
