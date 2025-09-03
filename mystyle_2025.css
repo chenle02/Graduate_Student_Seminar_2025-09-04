@@ -133,3 +133,25 @@ img {
   border-radius: 10%; /* Optional: creates a circular image */
   display: block;
 }
+
+/* ---- Reveal.js overview (ESC) highlight tweaks ---- */
+/* Make the current slide pop and others recede in overview mode */
+.reveal.overview .slides section {
+  transition: opacity 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+.reveal.overview .slides section:not(.present) {
+  opacity: 0.55;
+  filter: grayscale(35%) brightness(0.85);
+}
+
+.reveal.overview .slides section.present {
+  /* Strong, high-contrast outline with subtle glow */
+  outline: 8px solid var(--r-link-color, #42affa);
+  outline-offset: -8px;
+  box-shadow: 0 0 0 12px rgba(66, 175, 250, 0.25), 0 12px 32px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  opacity: 1 !important;
+  filter: none !important;
+  z-index: 2;
+}
