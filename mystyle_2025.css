@@ -89,6 +89,13 @@ img {
   border-radius: 10%; /* Optional: creates a circular image */
 }
 
+/* Constrain tall images on slides with additional text/math below */
+.img-tall-slide {
+  height: auto !important;
+  max-height: 45vh; /* keep room for formulas/captions */
+  margin-bottom: 0.5rem;
+}
+
 .left-text {
   text-align: left; /* Align text to the left */
 }
