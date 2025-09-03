@@ -5,18 +5,11 @@ description = "Auburn Graduate Students Seminar slides and Manim assets"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-  "manim>=0.18",
+  "manim>=0.19",
 ]
 
 [tool.uv]
 dev-dependencies = [
   "numpy>=1.24",
 ]
-
-[tool.uv.scripts]
-# Serve the slide deck locally
-serve = "python -m http.server 8000"
-
-# Quick LIS render (adjust quality flags as needed)
-render_lis = "manim -pqh Longest_increasing_subsequence/lis_manim.py LisDPScene"
 

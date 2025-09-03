@@ -1007,7 +1007,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "manim", specifier = ">=0.18" }]
+requires-dist = [{ name = "manim", specifier = ">=0.19" }]
 
 [package.metadata.requires-dev]
 dev = [{ name = "numpy", specifier = ">=1.24" }]
