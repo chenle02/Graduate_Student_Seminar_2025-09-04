@@ -98,6 +98,7 @@ Notes
 - Simons Foundation: Support acknowledged.
 - Manim: Animation engine used for LIS/RSK and visualizations — https://www.manim.community/
 - Reveal.js: Presentation framework powering `index.html` — https://revealjs.com/
+- 3Blue1Brown: CLT and probability visuals — https://www.youtube.com/@3blue1brown (CLT video: https://www.youtube.com/watch?v=zeJD6dqJ5lo)
 - Gemini CLI: Assisted ideation and refinement of some animations.
 - Codex CLI: Coding assistant used to help edit and maintain the repo — https://github.com/openai/codex-cli
 - SPDEs-Bib: Linked bibliographic resources — https://chenle02.github.io/SPDEs-Bib/index.html
